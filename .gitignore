@@ -1,0 +1,10 @@
+# Ignorar as pastas de imagens e datasets
+corsican-dataset/
+bdfire_yolo/
+
+# Ignorar os resultados e pesos pesados da IA
+runs/
+*.pt
+
+# Ignorar arquivos temporários do Python
+__pycache__/
