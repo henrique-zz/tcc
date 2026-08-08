@@ -1,0 +1,29 @@
+# ============================================================
+# CONFIGURAÇÕES DO EXPERIMENTO
+# ============================================================
+
+# --- Parâmetros do Dataset ---
+dataset:
+  nome: "flamevision"               
+  pasta_imagens: "datasets/flamevision-dataset"  
+  pasta_saida: "datasets/flamevision-dataset/Detection" # Onde o modelo vai achar o dataset.yaml     
+  train_size: 0.80
+  val_size: 0.10
+  test_size: 0.10
+
+# --- Parâmetros de Processamento (Visão Computacional) ---
+# processamento:
+#   kernel_size: 11
+#   merge_margin: 60
+#   min_area_pct: 0.0001
+
+
+# Aqui que alteramos o modelo usado, e em nome_experimento é o diretório que vai ficar salvo na pasta runs
+treinamento:
+  modelo_base: "pesos/yolov8n.pt"      
+  epochs: 100                    
+  imgsz: 640                     
+  batch_size: 16
+  nome_experimento: "flamevision-yolov8n-run07"
+  device: 0
+  workers: 0

@@ -1,11 +1,15 @@
 import yaml
 from pathlib import Path
-import processamento
-import treinamento
+
+from src import processamento
+from src import treinamento
+
+import src.processamento as processamento
+import src.treinamento as treinamento
 
 def main():
     # 1. Carrega o arquivo de configuração de parâmetros
-    caminho_config = Path("config.yaml")
+    caminho_config = Path("configs/config.yaml")
     if not caminho_config.exists():
         print("Erro: Arquivo config.yaml não foi encontrado na pasta raiz!")
         return
