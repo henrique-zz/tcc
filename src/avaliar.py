@@ -4,6 +4,7 @@ from pathlib import Path
 from PIL import Image
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+import shutil
 from ultralytics import YOLO
 
 def avaliar_modelo():
@@ -45,6 +46,16 @@ def avaliar_modelo():
         name=nome_experimento,
         project=pasta_predict.resolve().as_posix(),
     )
+
+    print("Arrumando a bagunça do YOLO (movendo imagens para a pasta 'images')...")
+    pasta_resultados = pasta_predict / nome_experimento
+    pasta_imagens_preditas = pasta_resultados / "images"
+    pasta_imagens_preditas.mkdir(parents=True, exist_ok=True)
+
+    # Procura todas as imagens que o YOLO jogou soltas e move para a pasta images
+    for arquivo in pasta_resultados.glob("*.*"):
+        if arquivo.suffix.lower() in ['.png', '.jpg', '.jpeg']:
+            shutil.move(str(arquivo), str(pasta_imagens_preditas / arquivo.name))
 
     # 4. Cálculo das Métricas
     print("\nCalculando as métricas da IA...")
