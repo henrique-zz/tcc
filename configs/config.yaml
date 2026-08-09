@@ -24,6 +24,6 @@ treinamento:
   epochs: 100                    
   imgsz: 640                     
   batch_size: 16
-  nome_experimento: "flamevision-yolov8n-run07"
+  nome_experimento: "flamevision-yolov8n-run1"
   device: 0
   workers: 0
